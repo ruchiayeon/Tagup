@@ -1,0 +1,24 @@
+<h1>TAG UP!</h1>
+<br>
+    <section id ="main">
+        <div id="tag_cloud">
+          <% tag_cloud Post.tag_counts, %w[s m l] do |tag, css_class| %>
+            <%= link_to tag.name, tag_path(tag.name) %>
+          <% end %>
+        </div>
+     
+            <ul>
+              <ol>
+                 <% @boards.each do |board| %>
+               
+                 <h3><%= board.title %> <%= link_to '더보기', board_path(board) %></h3>
+                 <h4>최근 게시물</h4>
+                     <% board.posts.last(20).each do |post| %>
+                 <li><%= link_to post.title, post_path(post) %></li>
+                 <% end %>
+                 
+              </ol>
+             
+            </ul> 
+        <% end %>
+    </section>

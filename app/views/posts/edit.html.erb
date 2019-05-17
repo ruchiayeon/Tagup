@@ -1,0 +1,20 @@
+<h2>Edit Post</h2>
+    <%= form_tag post_path(@post), method: "patch", multipart: true do %> 
+        <input type="hidden" name="id" value="<%=@post.content%>">
+        <input type="hidden" name="id" value="<%=@post.title%>">
+        <input type="hidden" name="id" value="<%=@post.tag_list%>">
+             <%= text_area_tag :title, @post.title, placeholder: "제목" %>
+        <br>
+             <%= text_area_tag :content, @post.content, placeholder: "내용" %>
+             
+        <br>
+             <%= file_field_tag :image %> 
+        <br>
+        
+             <%= text_area_tag :name, @post.tag_list, placeholder: "태그" %>
+        <br>
+        
+        <div class="input-field"><%= button_tag "수정하기", class: "btn" %></div>
+       
+    <% end %> 
+              

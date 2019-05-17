@@ -1,0 +1,7 @@
+<h1><%= @board.title %></h1>
+ <ul>
+     <% @board.posts.each do |post| %>
+         <li><%= link_to post.title, post_path(post) %> - <%= post.user.try(:name) %></li>
+     <% end %>
+ </ul>
+ <%= link_to '게시판 리스트 보기', boards_path %> 

@@ -1,0 +1,43 @@
+<section id = "postShow">
+       <h3><%= @post.title %></h3>
+       
+       <p>Tags:<%= raw @post.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %></p>  
+       
+       <p id ="postUser">작성자: <%= @post.try(:user).try(:name) %></p>
+       <p><%= @post.try(:content).try(:html_safe) %></p>
+       <br>
+       <img id = "mainImage" src="<%= @post.image.url %>">
+        <p id ="postUser"><% if current_user.id == @post.user.id %> 
+          <%= link_to "수정", edit_post_path, class: "right"%> 
+        <% end %></p>
+       
+</section>
+        <br>
+        <p>코멘트</p>
+        <%= form_tag comments_path do %>
+            <%= text_area_tag :content, nil, placeholder: '내용', required: true %>
+            <%= submit_tag '작성' %>
+        <% end %>
+       
+        
+    <% if @post.comments.present? %> 
+        <ul class="collection"> 
+                <% @post.comments.each do |comment| %>
+                <li class="collection-item">
+                 <span class="title"><%= comment.user.try(:name) %></span>
+                 <span class="right"><%= comment.created_at %></span>
+                 <p><%= comment.content %></p>
+                 
+                </li>
+            <% end %>
+        </ul>
+    <% end %>
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 

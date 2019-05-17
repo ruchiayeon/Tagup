@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TAG UP</title>
+    <%= csrf_meta_tags %>
+    <meta charset="utf-8" />
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/stylesheet/application.css" />
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+		
+	
+		
+				<!-- Header -->
+					<header id="header">
+						
+						<a href = "/" ><img id="headerIogo" src="https://github.com/ruchiayeon/LastTagUp/blob/master/logo.png?raw=true"></a>
+						<nav class="links">
+							<ul>
+ 							    		<ul id="searchheader">
+													<li class="search">
+													<form id="search" method="get" action="#">
+														<input type="text" name="query" placeholder="Search" />
+													</form>
+												</li>
+											</ul>
+											
+											<li id = "questionB"><%= link_to '질문하기', new_post_path %></li>
+								</ul>
+								
+								<ul id="login">
+								<div class="dropdown" style="float:right;">
+								<i class="material-icons">account_circle</i>
+								  <div class="dropdown-content">
+								    	<% if user_signed_in?%>
+											<a><%= link_to 'Edit', edit_user_registration_path %>
+											<%= link_to 'Logout', destroy_user_session_path, method: 'delete' %></a>
+										<% else %>
+											<a><%= link_to 'Login', new_user_session_path %>
+											<%= link_to 'Sign up', new_user_registration_path %></a>
+										<% end %>
+													     
+									<%= flash[:alert] %>
+								  </div>
+								</div>
+							</ul>
+							
+						</nav>
+						
+					</header>
+					
+  </head>
+
+  <body>
+  	<br>
+  	
+		  		<div id = "wrapper"	>						
+					          <%= yield %>
+					 </div>
+		              
+		      
+                
+                
+					
+                
+           
+         
+
+  </body>
+  	<!-- Footer -->
+							<section id="footer">
+								<p id="footerPtextRight" >@2017 TAGUP TEAM.All rights reserved</p>
+							</section>
+                
+</html>

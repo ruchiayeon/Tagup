@@ -1,0 +1,17 @@
+<h2>POSTING</h2>
+ <%= form_tag posts_path, method: 'post',multipart: true do %>
+     <%= collection_select(nil, :board_id, Board.all, :id, :title) %><br>
+     <%= text_field_tag :title, nil, placeholder: '제목' %><br>
+     
+     <div class="postcontent"><%= text_field_tag :content , nil ,cols: 40,placeholder: '내용' %> <br>
+       <%= file_field_tag 'image' %><br> 
+       
+     </div>
+     <br>
+      <div class="field">
+        <%= label :name, "Tags (separated by commas)" %>
+        <%= text_field_tag :name %>
+      </div>
+     <br>
+     <%= submit_tag '작성' %>
+ <% end %> 

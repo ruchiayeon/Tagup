@@ -1,0 +1,31 @@
+<section id="sidebar">
+        		  <% Board.all.each do |board| %>
+        		  <%= link_to board.title, board_path(board) %>
+        		  <% end %>
+   			  </section>
+<section>
+     <h1>Posting</h1>
+         <% @posts.each do |post| %>
+          
+                  <div id = "postTitle">
+                      
+                <strong><%= link_to post.title, post_path(post) %></strong>
+                   
+                  <p><%= post.try(:content).try(:html_safe) %></p>
+                   <p><%= post.try(:tags).try(:html_safe) %></p>
+                  
+                    <ol id ="postUser">post_by: <%= post.try(:user).try(:name) %>
+                    <% if current_user.id == post.user.id %> 
+                        <%= link_to "삭제", post_path(post), method: "delete", class: "right" %>
+                        <%= link_to "수정", edit_post_path(post), class: "right"%>
+                    <% end %></ol>
+                  </div>
+            <% end %> 
+                 
+        
+         
+</section>
+ 
+                 
+                   
+            
